@@ -13,3 +13,14 @@ spring:
           search-locations: file://${user.home}/config
 logging:
   config: classpath:logback-spring-native.xml
+
+management:
+  endpoints:
+    prometheus:
+      enabled: true
+    web:
+      exposure:
+        include: prometheus, gateway, health
+      base-path: /monitor
+      path-mapping:
+        health: /l7check
